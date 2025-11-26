@@ -55,6 +55,8 @@ jobs:
         run: |
           mkdir -p public
           cp README.md public/index.md
+          echo "theme: jekyll-theme-minimal" > public/_config.yml
+          touch public/.nojekyll
 
       # 5) Upload artifact for GitHub Pages
       - name: Upload artifact
