@@ -25,10 +25,14 @@ jobs:
           sudo apt-get install -y \
             pandoc \
             texlive \
-            texlive-xetex \
-            texlive-latex-extra \
+            texlive-latex-recommended \
             texlive-fonts-recommended \
-            fonts-noto fonts-noto-cjk fonts-noto-color-emoji
+            texlive-luatex \
+            texlive-xetex \
+            lmodern \
+            fonts-noto \
+            fonts-noto-cjk \
+            fonts-noto-color-emoji
 
       # 2) Create PDF folder
       - name: Prepare public folder
@@ -43,6 +47,7 @@ jobs:
             --pdf-engine=lualatex \
             -V mainfont="Noto Sans CJK KR" \
             -V fallbackfonts="Noto Color Emoji" \
+            -V monofont="Noto Sans Mono CJK KR" \
             -o public/portfolio.pdf
 
       # 4) Copy README as index.md (Pages 웹사이트용)
