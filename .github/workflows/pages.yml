@@ -1,4 +1,4 @@
-name: Build and Deploy with PDF
+name: Build & Deploy (Pages + PDF)
 
 on:
   push:
@@ -18,8 +18,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 1) Install LaTeX + Pandoc
-      - name: Install LaTeX and dependencies
+      # ============================
+      # 1) Install Pandoc + LaTeX
+      # ============================
+      - name: Install PDF dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -27,40 +29,48 @@ jobs:
             texlive \
             texlive-latex-recommended \
             texlive-fonts-recommended \
-            texlive-luatex \
             texlive-xetex \
+            texlive-luatex \
             lmodern \
             fonts-noto \
             fonts-noto-cjk \
             fonts-noto-color-emoji
 
-      # 2) Create PDF folder
+      # ============================
+      # 2) Prepare public folder
+      # ============================
       - name: Prepare public folder
         run: mkdir -p public
 
-      # 3) Convert README.md → PDF (Unicode + Emoji + Images 지원)
-      - name: Generate PDF from README.md
+      # ============================
+      # 3) Convert README → PDF
+      # ============================
+      - name: Generate PDF (README → portfolio.pdf)
         run: |
           pandoc README.md \
             --from markdown \
             --resource-path=".:./assets" \
             --pdf-engine=lualatex \
             -V mainfont="Noto Sans CJK KR" \
-            -V fallbackfonts="Noto Color Emoji" \
             -V monofont="Noto Sans Mono CJK KR" \
+            -V mathfont="Latin Modern Math" \
+            -V fallbackfonts="Noto Color Emoji" \
             -o public/portfolio.pdf
 
-      # 4) Copy README as index.md (Pages 웹사이트용)
+      # ============================
+      # 4) Build GitHub Pages site
+      # ============================
       - name: Build GitHub Pages site
         run: |
           mkdir -p public
           cp README.md public/index.md
           echo "theme: jekyll-theme-minimal" > public/_config.yml
-          touch public/.nojekyll
 
-      # 5) Upload artifact for GitHub Pages
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+      # ============================
+      # 5) Upload artifact for Pages
+      # ============================
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
         with:
           path: public
 
