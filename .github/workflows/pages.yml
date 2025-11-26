@@ -21,11 +21,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Jekyll
+      - name: Build Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: .
-          destination: ./_site
+          destination: ./public
 
       # PDF 생성 (기존 workflow와 동일)
       - name: Install Pandoc + LaTeX
@@ -40,16 +40,13 @@ jobs:
             --resource-path=".:./assets" \
             --pdf-engine=xelatex \
             -V mainfont="Noto Sans CJK KR" \
-            -o portfolio.pdf
+            -o public/portfolio.pdf
 
       # PDF 파일을 빌드 결과물(_site)에 포함
-      - name: Copy PDF to site
-        run: cp portfolio.pdf _site/
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: ./public
 
   deploy:
     environment:
