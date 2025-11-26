@@ -58,16 +58,22 @@ jobs:
             -o public/portfolio.pdf
 
       # ============================
-      # 4) Build GitHub Pages site
+      # 4) Setup Pages
       # ============================
-      - name: Build GitHub Pages site
-        run: |
-          mkdir -p public
-          cp README.md public/index.md
-          echo "theme: jekyll-theme-minimal" > public/_config.yml
+      - name: Setup Pages
+        uses: actions/setup-pages@v5     
 
       # ============================
-      # 5) Upload artifact for Pages
+      # 5) Build GitHub Pages site
+      # ============================
+      - name: Build GitHub Pages site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: .
+          destination: ./public
+
+      # ============================
+      # 6) Upload artifact for Pages
       # ============================
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
