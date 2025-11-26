@@ -1,63 +1,66 @@
-name: Deploy GitHub Pages
+name: Build and Deploy with PDF
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches:
+      - main
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      # Jekyll → public
-      - name: Build Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: .
-          destination: ./public
-
-      - name: Fix permissions
-        run: sudo chown -R $USER:$USER public
-
-      # PDF 생성
-      - name: Install Pandoc + LaTeX
+      # 1) Install LaTeX + Pandoc
+      - name: Install LaTeX and dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-full fonts-noto-cjk
+          sudo apt-get install -y \
+            pandoc \
+            texlive \
+            texlive-xetex \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            fonts-noto fonts-noto-cjk fonts-noto-color-emoji
 
-      - name: Generate PDF (Pandoc)
+      # 2) Create PDF folder
+      - name: Prepare public folder
+        run: mkdir -p public
+
+      # 3) Convert README.md → PDF (Unicode + Emoji + Images 지원)
+      - name: Generate PDF from README.md
         run: |
           pandoc README.md \
             --from markdown \
             --resource-path=".:./assets" \
-            --pdf-engine=xelatex \
+            --pdf-engine=lualatex \
             -V mainfont="Noto Sans CJK KR" \
             -V fallbackfonts="Noto Color Emoji" \
             -o public/portfolio.pdf
 
+      # 4) Copy README as index.md (Pages 웹사이트용)
+      - name: Build GitHub Pages site
+        run: |
+          mkdir -p public
+          cp README.md public/index.md
+
+      # 5) Upload artifact for GitHub Pages
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: ./public
+          path: public
 
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
+
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4

@@ -2,29 +2,29 @@
 
 ## 📑 포트폴리오 목차
 
-- [About Me](#-about-me)
-- [Tech Stack](#-tech-stack)
+- [About Me](#about-me)
+- [Tech Stack](#tech-stack)
   - [Backend](#backend)
   - [AI(DL/ML, Preprocessing, NPU etc.)](#aidlml-preprocessing-npu-etc)
   - [Infra & DevOps](#infra--devops)
   - [Database & Storage](#database--storage)
   - [Tools](#tools)
-- [Projects](#-projects)
-  - [Project 1. SmartCLM](#-project-1-smartclm)
-  - [Project 2. X-ray Detection 솔루션](#-project-2-x-ray-detection-솔루션)
-  - [Project 3. 딥레이크 서비스 개발](#-project-3-딥레이크-서비스-개발)
-  - [Project 4. 스마트공장 솔루션 구축](#-project-4-스마트공장-솔루션-구축)
-  - [Project 5. 화질 개선 솔루션 구축](#-project-5-화질-개선-솔루션-구축)
-  - [Project 6. 지하공동구 표준관리시스템 개발](#-project-6-지하공동구-표준관리시스템-개발)
-- [Development Principles](#-development-principles)
-- [Writing & Presentation](#-writing--presentation)
+- [Projects](#projects)
+  - [Project 1. SmartCLM](#project-1-smartclm)
+  - [Project 2. X-ray Detection 솔루션](#project-2-x-ray-detection-솔루션)
+  - [Project 3. 딥레이크 서비스 개발](#project-3-딥레이크-서비스-개발)
+  - [Project 4. 스마트공장 솔루션 구축](#project-4-스마트공장-솔루션-구축)
+  - [Project 5. 화질 개선 솔루션 구축](#project-5-화질-개선-솔루션-구축)
+  - [Project 6. 지하공동구 표준관리시스템 개발](#project-6-지하공동구-표준관리시스템-개발)
+- [Development Principles](#development-principles)
+- [Writing & Presentation](#writing--presentation)
 - [ETC](#etc)
-- [Education & Certificates](#-education--certificates)
-- [Contact](#-contact)
+- [Education & Certificates](#education--certificates)
+- [Contact](#contact)
 
 ---
 
-## 📌 About Me
+## About Me
 
 빠른 문제 파악과 문제해결을 기반으로 안정적인 서비스를 지향하는 백엔드 개발자입니다.
 
@@ -43,7 +43,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 ### Backend
 
@@ -109,11 +109,11 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-## 💼 Projects
+## Projects
 
 ---
 
-### 📂 Project 1. **SmartCLM**
+### Project 1. **SmartCLM**
 
 ![SmartCLM 메인화면](assets/projects/smartclm/smartclm_main.png)
 
@@ -157,7 +157,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### 📂 Project 2. **X-ray Detection 솔루션**
+### Project 2. **X-ray Detection 솔루션**
 
 ![X-ray Detection 솔루션 메인](assets/projects/xray/xray_main.png)
 
@@ -198,7 +198,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### 📂 Project 3. **딥레이크 서비스 개발**
+### Project 3. **딥레이크 서비스 개발**
 
 ![딥레이크 프로젝트 메인](assets/projects/deeplake/deeplake_main.png)
 ![딥레이크 이미지 어노테이션](assets/projects/deeplake/deeplake_annotation.png)
@@ -267,7 +267,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### 📂 Project 4. **스마트공장 솔루션 구축**
+### Project 4. **스마트공장 솔루션 구축**
 
 ![스마트공장 메인 화면](assets/projects/smartfactory/smartfactory_main.png)
 
@@ -327,7 +327,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### 📂 Project 5. **화질 개선 솔루션 구축**
+### Project 5. **화질 개선 솔루션 구축**
 
 ![화질개선 솔루션 메인 화면](assets/projects/pms/pms_main.png)
 
@@ -385,7 +385,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### 📂 Project 6. **지하공동구 표준관리시스템 개발**
+### Project 6. **지하공동구 표준관리시스템 개발**
 
 ![지하공동구 표준관리시스템 모델 메인화면](assets/projects/cut/cut_main.png)
 
@@ -430,7 +430,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-## 🏗 Development Principles
+## Development Principles
 
 - 🚀 **읽기 쉬운 API**
   - 명확한 네이밍과 책임 분리
@@ -451,7 +451,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-## ✍ Writing & Presentation
+## Writing & Presentation
 
 - [2023, 고려대 안암캠퍼스] 심리학 기반 AI 이해와 활용 특강(AI 빅데이터 분석 프로세스)
 - [2023, 한국공학대학교 탄소중립혁신센터] 스마트에너지플랫폼 MC기술세미나(제조현장 AI 특강)
@@ -473,13 +473,13 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-## 🎓 Education & Certificates
+## Education & Certificates
 
 - 경영학과 전공
 - ADsP
 
 ---
 
-## 📎 Contact
+## Contact
 
 - GitHub Issue / 이메일로 연락 바랍니다.
