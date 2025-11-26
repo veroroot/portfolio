@@ -6,8 +6,8 @@
 - [Tech Stack](#tech-stack)
   - [Backend](#backend)
   - [AI(DL/ML, Preprocessing, NPU etc.)](#aidlml-preprocessing-npu-etc)
-  - [Infra & DevOps](#infra--devops)
-  - [Database & Storage](#database--storage)
+  - [Infra & DevOps](#infradevops)
+  - [Database & Storage](#databasestorage)
   - [Tools](#tools)
 - [Projects](#projects)
   - [Project 1. SmartCLM](#project-1-smartclm)
@@ -17,9 +17,9 @@
   - [Project 5. 화질 개선 솔루션 구축](#project-5-화질-개선-솔루션-구축)
   - [Project 6. 지하공동구 표준관리시스템 개발](#project-6-지하공동구-표준관리시스템-개발)
 - [Development Principles](#development-principles)
-- [Writing & Presentation](#writing--presentation)
+- [Writing & Presentation](#writingpresentation)
 - [ETC](#etc)
-- [Education & Certificates](#education--certificates)
+- [Education & Certificates](#educationcertificates)
 - [Contact](#contact)
 
 ---
@@ -59,7 +59,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 - Pandas, Numpy, Opencv, FFMPEG, KoNLPY
 - Furiosa SDK
 
-### Infra & DevOps
+### Infra/DevOps
 
 #### On-premise
 
@@ -73,7 +73,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 - AWS API Gateway, ALB
 - Github, AWS Cloud Formation, AWS Code Pipeline, AWS ECR (CI/CD)
 
-### Database & Storage
+### Database/Storage
 
 #### Common
 
@@ -113,7 +113,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### Project 1. **SmartCLM**
+### Project 1 SmartCLM
 
 ![SmartCLM 메인화면](assets/projects/smartclm/smartclm_main.png)
 
@@ -157,7 +157,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### Project 2. **X-ray Detection 솔루션**
+### Project 2 X-ray Detection 솔루션
 
 ![X-ray Detection 솔루션 메인](assets/projects/xray/xray_main.png)
 
@@ -198,7 +198,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### Project 3. **딥레이크 서비스 개발**
+### Project 3 딥레이크 서비스 개발
 
 ![딥레이크 프로젝트 메인](assets/projects/deeplake/deeplake_main.png)
 ![딥레이크 이미지 어노테이션](assets/projects/deeplake/deeplake_annotation.png)
@@ -267,7 +267,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### Project 4. **스마트공장 솔루션 구축**
+### Project 4 스마트공장 솔루션 구축
 
 ![스마트공장 메인 화면](assets/projects/smartfactory/smartfactory_main.png)
 
@@ -327,7 +327,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### Project 5. **화질 개선 솔루션 구축**
+### Project 5 화질 개선 솔루션 구축
 
 ![화질개선 솔루션 메인 화면](assets/projects/pms/pms_main.png)
 
@@ -385,7 +385,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-### Project 6. **지하공동구 표준관리시스템 개발**
+### Project 6 지하공동구 표준관리시스템 개발
 
 ![지하공동구 표준관리시스템 모델 메인화면](assets/projects/cut/cut_main.png)
 
@@ -451,7 +451,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-## Writing & Presentation
+## Writing/Presentation
 
 - [2023, 고려대 안암캠퍼스] 심리학 기반 AI 이해와 활용 특강(AI 빅데이터 분석 프로세스)
 - [2023, 한국공학대학교 탄소중립혁신센터] 스마트에너지플랫폼 MC기술세미나(제조현장 AI 특강)
@@ -473,7 +473,7 @@ FastAPI 기반 서비스 구축, 데이터 구조 설계, AI 모델 서빙 등 �
 
 ---
 
-## Education & Certificates
+## Education/Certificates
 
 - 경영학과 전공
 - ADsP
