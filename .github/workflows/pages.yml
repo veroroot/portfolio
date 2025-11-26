@@ -61,7 +61,7 @@ jobs:
       # 4) Setup Pages
       # ============================
       - name: Setup Pages
-        uses: actions/setup-pages@v5     
+        uses: actions/configure-pages@v5     
 
       # ============================
       # 5) Build GitHub Pages site
