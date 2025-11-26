@@ -28,16 +28,16 @@ jobs:
           destination: ./_site
 
       # PDF 생성 (기존 workflow와 동일)
-      - name: Install Pandoc
+      - name: Install Pandoc + LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive texlive-latex-extra
+          sudo apt-get install -y pandoc texlive-full
 
       - name: Convert README.md to PDF
         run: |
           pandoc README.md \
-            --resource-path=./assets \
             --from markdown \
+            --resource-path=".:./assets" \
             --pdf-engine=xelatex \
             -V mainfont="Noto Sans CJK KR" \
             -o portfolio.pdf

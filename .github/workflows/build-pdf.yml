@@ -10,21 +10,19 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y pandoc
-        sudo apt-get install -y texlive texlive-latex-extra
-        sudo apt-get install -y nodejs npm
+        sudo apt-get install -y pandoc texlive-full nodejs npm
         npm install -g puppeteer
 
     - name: Convert README.md to PDF
       run: |
         pandoc README.md \
-          --resource-path=./assets \
           --from markdown \
+          --resource-path=".:./assets" \
           --pdf-engine=xelatex \
           -V mainfont="Noto Sans CJK KR" \
           -o portfolio.pdf
