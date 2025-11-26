@@ -17,23 +17,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Jekyll 빌드 (Markdown → HTML)
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # Jekyll → public
       - name: Build Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: .
           destination: ./public
 
-      # PDF 생성 (기존 workflow와 동일)
+      # PDF 생성
       - name: Install Pandoc + LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc texlive-full fonts-noto-cjk
 
-      - name: Convert README.md to PDF
+      - name: Generate PDF (Pandoc)
         run: |
           pandoc README.md \
             --from markdown \
@@ -42,7 +42,6 @@ jobs:
             -V mainfont="Noto Sans CJK KR" \
             -o public/portfolio.pdf
 
-      # PDF 파일을 빌드 결과물(_site)에 포함
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

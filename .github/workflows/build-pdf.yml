@@ -1,70 +1,77 @@
 name: Generate PDF
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:   # push 충돌 제거
+  # push:
+  #   branches: [ "main" ]
 
 jobs:
   build-pdf:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Install Dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y pandoc texlive-full fonts-noto-cjk nodejs npm
-        sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
-          libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 \
-          libpango-1.0-0 libcairo2 libasound2
+      # Pandoc & LaTeX & Chromium deps
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-full fonts-noto-cjk \
+            libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
+            libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 \
+            libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2
 
-    - name: Install Puppeteer
-      run: |
-        npm install -g puppeteer
+      # Puppeteer (local 설치)
+      - name: Install Puppeteer
+        run: |
+          npm init -y
+          npm install puppeteer
 
-    - name: Convert README.md to PDF
-      run: |
-        pandoc README.md \
-          --from markdown \
-          --resource-path=".:./assets" \
-          --pdf-engine=xelatex \
-          -V mainfont="Noto Sans CJK KR" \
-          -o portfolio.pdf
-    
-    - name: Convert MD → HTML
-      run: |
-        pandoc README.md -o output.html
-    
-    - name: HTML → PDF (Puppeteer)
-      run: |
-        node -e "
-        (async () => {
-          const puppeteer = require('puppeteer');
-          const browser = await puppeteer.launch();
-          const page = await browser.newPage();
-          await page.goto('file://$GITHUB_WORKSPACE/output.html');
-          await page.pdf({path: 'portfolio_web.pdf'});
-          await browser.close();
-        })()
-        "
+      - name: Pandoc PDF
+        run: |
+          pandoc README.md \
+            --from markdown \
+            --pdf-engine=xelatex \
+            -V mainfont="Noto Sans CJK KR" \
+            -o portfolio.pdf
 
-    - name: Upload PDF Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: portfolio.pdf
-        path: portfolio.pdf
+      - name: MD → HTML
+        run: pandoc README.md -o output.html
 
-    - name: Create Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: v${{ github.run_number }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: HTML → PDF (Puppeteer)
+        run: |
+          node -e "
+          (async () => {
+            const puppeteer = require('puppeteer');
+            const browser = await puppeteer.launch({
+              args: ['--no-sandbox','--disable-setuid-sandbox']
+            });
+            const page = await browser.newPage();
+            await page.goto('file://$GITHUB_WORKSPACE/output.html');
+            await page.pdf({ path: 'portfolio_web.pdf' });
+            await browser.close();
+          })()
+          "
 
-    - name: Upload PDF to Release
-      uses: softprops/action-gh-release@v2
-      with:
-        files: |
-          portfolio.pdf
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio
+          path: |
+            portfolio.pdf
+            portfolio_web.pdf
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload PDFs to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            portfolio.pdf
+            portfolio_web.pdf
