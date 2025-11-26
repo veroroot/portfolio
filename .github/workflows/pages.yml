@@ -27,6 +27,9 @@ jobs:
           source: .
           destination: ./public
 
+      - name: Fix permissions
+        run: sudo chown -R $USER:$USER public
+
       # PDF 생성
       - name: Install Pandoc + LaTeX
         run: |
@@ -40,6 +43,7 @@ jobs:
             --resource-path=".:./assets" \
             --pdf-engine=xelatex \
             -V mainfont="Noto Sans CJK KR" \
+            -V fallbackfonts="Noto Color Emoji" \
             -o public/portfolio.pdf
 
       - name: Upload artifact
