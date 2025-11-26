@@ -34,6 +34,7 @@ jobs:
             --from markdown \
             --pdf-engine=xelatex \
             -V mainfont="Noto Sans CJK KR" \
+            -V fallbackfonts="Noto Color Emoji" \
             -o portfolio.pdf
 
       - name: MD → HTML
