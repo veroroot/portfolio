@@ -1,0 +1,65 @@
+name: Generate PDF
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc
+        sudo apt-get install -y texlive texlive-latex-extra
+        sudo apt-get install -y nodejs npm
+        npm install -g puppeteer
+
+    - name: Convert README.md to PDF
+      run: |
+        pandoc README.md \
+          --resource-path=./assets \
+          --from markdown \
+          --pdf-engine=pdflatex \
+          -o portfolio.pdf
+    
+    - name: Convert MD → HTML
+      run: |
+        pandoc README.md -o output.html
+    
+    - name: HTML → PDF (Puppeteer)
+      run: |
+        node -e "
+        (async () => {
+          const puppeteer = require('puppeteer');
+          const browser = await puppeteer.launch();
+          const page = await browser.newPage();
+          await page.goto('file://$GITHUB_WORKSPACE/output.html');
+          await page.pdf({path: 'portfolio_web.pdf'});
+          await browser.close();
+        })()
+        "
+
+    - name: Upload PDF Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: portfolio.pdf
+        path: portfolio.pdf
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v${{ github.run_number }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload PDF to Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          portfolio.pdf
