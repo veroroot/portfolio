@@ -1,0 +1,5 @@
+title: 'My Portfolio'
+theme: jekyll-theme-minimal
+markdown: GFM
+# logo: /assets/profile.png   # 있으면
+show_downloads: true
