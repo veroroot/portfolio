@@ -36,8 +36,10 @@ jobs:
       - name: Convert README.md to PDF
         run: |
           pandoc README.md \
+            --resource-path=./assets \
             --from markdown \
-            --pdf-engine=pdflatex \
+            --pdf-engine=xelatex \
+            -V mainfont="Noto Sans CJK KR" \
             -o portfolio.pdf
 
       # PDF 파일을 빌드 결과물(_site)에 포함

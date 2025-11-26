@@ -25,7 +25,8 @@ jobs:
         pandoc README.md \
           --resource-path=./assets \
           --from markdown \
-          --pdf-engine=pdflatex \
+          --pdf-engine=xelatex \
+          -V mainfont="Noto Sans CJK KR" \
           -o portfolio.pdf
     
     - name: Convert MD → HTML
