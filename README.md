@@ -93,7 +93,6 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 ### **SmartCLM** | RAG 기반 Agent 웹 서비스 구축
 
 ![SmartCLM 메인화면](assets/projects/smartclm/smartclm_main.png)
-
 **기간:** 2025.07 ~ 2025.09
 
 **역할:** AI Backend Engineer
@@ -116,13 +115,11 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 - Vue 기반 클라이언트 및 MS Office.js와 연동
 
 #### 🏗 시스템 아키텍처
-
 ![SmartCLM 시스템 아키텍처](assets/projects/smartclm/smartclm_architecture.png)
 
 #### 🧰사용 기술
 
 ![SmartCLM 기술스택](assets/projects/smartclm/smartclm_tech.png)
-
 - Backend: FastAPI, SQLModel
 - Infra: AWS ECS on Fargate, ALB, SQS, Lambda
 - Data: AWS RDS(PostgreSQL, PGVector), ElastiCache(Redis)
@@ -131,7 +128,6 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### 🎯 성과 & 결과
 
 ![AWS Marketplace](assets/projects/smartclm/smartclm_aws.png)
-
 - 서비스 오픈(AWS Marketplace SaaS 등록 및 AI Industry Demo Showcase 참여)
 - L사 법무팀 대상 CLM 고도화 프로젝트 PoC 수행 완료(정량/정성지표 통과)
 - RAG 및 Prompt Engineering 기반 법무팀 요구사항 대응
@@ -150,7 +146,6 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 ### **X-ray Detection 솔루션** | 실시간 영상 분석 + 웹 서비스 구축
 
 ![X-ray Detection 솔루션 메인](assets/projects/xray/xray_main.png)
-
 **기간:** 2024.02 ~ 2025.05
 
 **역할:** AI Backend Engineer
@@ -176,7 +171,6 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 #### 🧰사용 기술
 ![X-ray Detection 기술스택](assets/projects/xray/xray_tech.png)
-
 - Backend: FastAPI, SQLModel
 - Infra: Docker, Nginx, PyInstaller
 - Data: MariaDB, Redis
@@ -316,7 +310,6 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### 🧰사용 기술
 
 ![스마트공장 솔루션 기술스택](assets/projects/smartfactory/smartfactory_tech.png)
-
 - Backend: FastAPI, SQLModel
 - Infra: Docker, Nginx
 - Data: MariaDB, Redis, RabbitMQ
@@ -325,13 +318,10 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### 🎯 성과 & 결과
 
 - 시스템 성과
-
   - 통계 조회 평균 응답 시간 120ms → 38ms  
   - 복잡한 데이터 쿼리를 구조화해 유지보수성 향상
   - On-premise 개발/운용 환경 CI/CD 무중단 배포를 통한 운영 개선
-
 - 운용 성과
-
   - 공장 현장 담당자에게 실시간 센싱 데이터 모니터링 제공
   - 설비 이상 감지 데이터 제공을 통한 안정적 운용 관리 제공
   - 피크 전력 제어로 하루 최대 19,291,210원 절약
