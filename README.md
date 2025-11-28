@@ -80,7 +80,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 - 사용자/프로젝트/워크스페이스 권한 관리 및 인증 서버 구축
 - GitHub Actions로 CI/CD 자동화
 
---
+---
 
 ## Projects
 
@@ -117,9 +117,11 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 #### 🏗 시스템 아키텍처
 
-[Web] [MS Office] <-> [FastAPI Server] <-> [AWS Bedrock]
+![SmartCLM 시스템 아키텍처](assets/projects/smartclm/smartclm_architecture.png)
 
 #### 🧰사용 기술
+
+![SmartCLM 기술스택](assets/projects/smartclm/smartclm_tech.png)
 
 - Backend: FastAPI, SQLModel
 - Infra: AWS ECS on Fargate, ALB, SQS, Lambda
@@ -173,6 +175,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 ![시스템구조도](assets/projects/xray/xray_architecture.png)
 
 #### 🧰사용 기술
+![X-ray Detection 기술스택](assets/projects/xray/xray_tech.png)
 
 - Backend: FastAPI, SQLModel
 - Infra: Docker, Nginx, PyInstaller
@@ -308,6 +311,17 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 #### 🏗 시스템 아키텍처
 
+![스마트공장 솔루션 아키텍처](assets/projects/smartfactory/smartfactory_architecture.png)
+
+#### 🧰사용 기술
+
+![스마트공장 솔루션 기술스택](assets/projects/smartfactory/smartfactory_tech.png)
+
+- Backend: FastAPI, SQLModel
+- Infra: Docker, Nginx
+- Data: MariaDB, Redis, RabbitMQ
+- AI: Transformer, Pytorch
+
 #### 🎯 성과 & 결과
 
 - 시스템 성과
@@ -325,6 +339,11 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
   - 전산 설비 제어 및 데이터 수집을 통한 최적 제어 솔루션 제공
 
 #### 📝 Lessons Learned
+
+- RabbitMQ 기반 Message Queue 구축 및 운용 관리
+- Multi Processing/Thread 기반 프로세스 운용 관리
+- WebSocket 기반 데이터 통신 구축 및 운용 관리
+- Nginx, Gunicorn, Uvicorn, FastAPI 연계를 통해 통신 안정성 확보
 
 ---
 
@@ -373,8 +392,6 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 - 업로드 영상을 대상 Denoise 적용 및 옵션에 따른 Encoding 제공
 - 딥러닝 모델 컨테이너 등록 및 배포 기능
 - 시스템 연동된 GPU/NPU 서버 현황 모니터링 제공 기능
-
-#### 🏗 시스템 아키텍처
 
 #### 🎯 성과 & 결과
 
@@ -433,12 +450,18 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 #### 🏗 시스템 아키텍처
 
+![지하공동구 표준관리시스템 아키텍처](assets/projects/cut/cut_architecture.png)
+
 #### 🎯 성과 & 결과
 
 - 고양시 현장 설치 및 운용
 - 지하공동구 표준관리시스템 개발 및 확산
 
 #### 📝 Lessons Learned
+
+- 시계열 모델 MLOps 방안 구축
+- Docker 기반 컨테이너 시스템 관리 방안
+- TTA V&V 인증 프로세스
 
 ---
 
@@ -467,9 +490,9 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 - [2023, 고려대 안암캠퍼스] 심리학 기반 AI 이해와 활용 특강(AI 빅데이터 분석 프로세스)
 - [2023, 한국공학대학교 탄소중립혁신센터] 스마트에너지플랫폼 MC기술세미나(제조현장 AI 특강)
-![한국공학대학교 특강]()
+![한국공학대학교 특강](assets/presentation/한국공학대학교.png)
 - [2025, AWS 센터필드] AWS AI Industry Week Demo Showcase 참가(비에스지파트너스 서비스 설명)
-![AWS AI Industry Week Demo Showcase 서비스 시연 및 설명]()
+![AWS AI Industry Week Demo Showcase 서비스 시연 및 설명](assets/presentation/AWS_센터필드.png)
 
 ---
 
