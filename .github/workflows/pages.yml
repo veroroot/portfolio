@@ -37,13 +37,7 @@ jobs:
             fonts-noto-color-emoji
 
       # ============================
-      # 2) Prepare public folder
-      # ============================
-      - name: Prepare public folder
-        run: mkdir -p public
-
-      # ============================
-      # 3) Convert README → PDF
+      # 2) Convert README → PDF (임시 위치)
       # ============================
       - name: Generate PDF (README → portfolio.pdf)
         run: |
@@ -55,22 +49,28 @@ jobs:
             -V monofont="Noto Sans Mono CJK KR" \
             -V mathfont="Latin Modern Math" \
             -V fallbackfonts="Noto Color Emoji" \
-            -o public/portfolio.pdf
+            -o portfolio.pdf
 
       # ============================
-      # 4) Setup Pages
+      # 3) Setup Pages
       # ============================
       - name: Setup Pages
         uses: actions/configure-pages@v5     
 
       # ============================
-      # 5) Build GitHub Pages site
+      # 4) Build GitHub Pages site
       # ============================
       - name: Build GitHub Pages site
         uses: actions/jekyll-build-pages@v1
         with:
           source: .
           destination: ./public
+
+      # ============================
+      # 5) Copy PDF to public folder (Jekyll 빌드 후)
+      # ============================
+      - name: Copy PDF to public folder
+        run: cp portfolio.pdf public/portfolio.pdf
 
       # ============================
       # 6) Upload artifact for Pages

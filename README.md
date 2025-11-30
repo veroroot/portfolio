@@ -12,12 +12,12 @@
   - [Tools](#tools)
 - [Work Highlight](#work-highlight)
 - [Projects](#projects)
-  - [SmartCLM](#smartclm--rag-기반-agent-웹-서비스-구축)
-  - [X-ray Detection 솔루션](#x-ray-detection-솔루션--실시간-영상-분석--웹-서비스-구축)
-  - [딥레이크](#딥레이크--이미지-데이터셋-관리-기반-mlops-시스템-구축)
-  - [스마트공장 솔루션 구축](#스마트공장-솔루션-구축--실시간-시계열-데이터-수집적재이상탐지-솔루션)
-  - [PMS](#pms--딥러닝-기반-동영상-화질-개선-솔루션-구축)
-  - [지하공동구 표준관리시스템 개발](#지하공동구-표준관리시스템-개발)
+  - [SmartCLM](#smartclm)
+  - [X-ray Detection 솔루션](#x-ray-detection-solution)
+  - [딥레이크](#deep-lake)
+  - [스마트공장 솔루션 구축](#smart-factory-solution)
+  - [PMS](#pms)
+  - [지하공동구 표준관리시스템 개발](#utility-tunnel-standard-management-system)
 - [Development Principles](#development-principles)
 - [Writing & Presentation](#writingpresentation)
 - [ETC](#etc)
@@ -90,9 +90,12 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **SmartCLM** | RAG 기반 Agent 웹 서비스 구축
+### **SmartCLM**
+
+#### RAG 기반 Agent 웹 서비스 구축
 
 ![SmartCLM 메인화면](assets/projects/smartclm/smartclm_main.png)
+
 **기간:** 2025.07 ~ 2025.09
 
 **역할:** AI Backend Engineer
@@ -115,11 +118,13 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 - Vue 기반 클라이언트 및 MS Office.js와 연동
 
 #### 🏗 시스템 아키텍처
+
 ![SmartCLM 시스템 아키텍처](assets/projects/smartclm/smartclm_architecture.png)
 
 #### 🧰사용 기술
 
 ![SmartCLM 기술스택](assets/projects/smartclm/smartclm_tech.png)
+
 - Backend: FastAPI, SQLModel
 - Infra: AWS ECS on Fargate, ALB, SQS, Lambda
 - Data: AWS RDS(PostgreSQL, PGVector), ElastiCache(Redis)
@@ -128,6 +133,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### 🎯 성과 & 결과
 
 ![AWS Marketplace](assets/projects/smartclm/smartclm_aws.png)
+
 - 서비스 오픈(AWS Marketplace SaaS 등록 및 AI Industry Demo Showcase 참여)
 - L사 법무팀 대상 CLM 고도화 프로젝트 PoC 수행 완료(정량/정성지표 통과)
 - RAG 및 Prompt Engineering 기반 법무팀 요구사항 대응
@@ -143,9 +149,12 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **X-ray Detection 솔루션** | 실시간 영상 분석 + 웹 서비스 구축
+### **X-ray Detection Solution**
+
+#### 실시간 영상 분석 + 웹 서비스 구축
 
 ![X-ray Detection 솔루션 메인](assets/projects/xray/xray_main.png)
+
 **기간:** 2024.02 ~ 2025.05
 
 **역할:** AI Backend Engineer
@@ -167,10 +176,13 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 - React 기반 클라이언트와 연동 및 Desktop App 연동을 위해 Pyinstaller 패키징
 
 #### 🏗 시스템 아키텍처
+
 ![시스템구조도](assets/projects/xray/xray_architecture.png)
 
 #### 🧰사용 기술
+
 ![X-ray Detection 기술스택](assets/projects/xray/xray_tech.png)
+
 - Backend: FastAPI, SQLModel
 - Infra: Docker, Nginx, PyInstaller
 - Data: MariaDB, Redis
@@ -192,7 +204,9 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **딥레이크** | 이미지 데이터셋 관리 기반 MLOps 시스템 구축
+### **Deep Lake**
+
+#### 이미지 데이터셋 관리 기반 MLOps 시스템 구축
 
 ![딥레이크 프로젝트 메인](assets/projects/deeplake/deeplake_main.png)
 ![딥레이크 이미지 어노테이션](assets/projects/deeplake/deeplake_annotation.png)
@@ -210,16 +224,13 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### ⭐ 핵심 기여
 
 - 초기 PoC 서비스 백엔드 단독 개발
-
   - 초대 토큰 발급/검증 API 구현
   - 프로젝트 멤버 & 워크스페이스 멤버 테이블 설계
   - 이미지 업로드 및 파일 관리 기능 개발
   - Redis 기반 Refresh Token 관리
   - 역할/권한 레벨 관리
   - React 기반 클라이언트와 연동
-
 - Cloud 서비스 전환 개발 총괄
-
   - AWS 아키텍처 설계
   - API 명세서 작성 및 ERD 설계
   - 프로젝트 멤버 & 워크스페이스 멤버 관리 기능 개선
@@ -231,19 +242,17 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### 🔧 핵심 기능
 
 - 인증 및 검증
-
   - Google OAuth 인증
   - Email 기반 회원가입/로그인 및 멤버 초대
   - 초대 만료 및 재발급
-
 - 프로젝트 및 워크스페이스
-
   - 결제 단위 워크스페이스 하위에 프로젝트 기반 이미지지 업로드 및 데이터 관리
   - 워크스페이스 관리(프로젝트, 멤버)
   - 프로젝트 내 이미지 대량 업로드 및 관리 기능
   - 이미지 라벨링(Annotation) 기능(BBox, Polygon)
 
 #### 🏗 시스템 아키텍처
+
 ![딥레이크 전체 아키텍처](assets/projects/deeplake/deeplake_architecture.png)
 
 #### 🎯 성과 & 결과
@@ -263,7 +272,9 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **스마트공장 솔루션 구축** | 실시간 시계열 데이터 수집/적재/이상탐지 솔루션
+### **Smart Factory Solution**
+
+#### 실시간 시계열 데이터 수집/적재/이상탐지 솔루션
 
 ![스마트공장 메인 화면](assets/projects/smartfactory/smartfactory_main.png)
 
@@ -280,14 +291,11 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### ⭐ 핵심 기여
 
 - 인프라 구축
-
   - On-premise 환경 Linux 서버 세팅
   - 개발서버 및 운영서버 CI/CD 구축(Gitlab, Jenkins, Harbor, Docker)
   - RabbitMQ 서버 구축
   - 웹서버 구축(FastAPI, Uvicorn, Gunicorn, Nginx)
-
 - 백엔드 개발
-
   - Message Queue 기반 데이터 수집 기능 개발
   - MQ 관리 프로세스 운영을 위한 Multi Processing/Thread 기반의 Manager 기능 개발
   - WebSocket 기반 실시간 데이터 전송
@@ -310,6 +318,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### 🧰사용 기술
 
 ![스마트공장 솔루션 기술스택](assets/projects/smartfactory/smartfactory_tech.png)
+
 - Backend: FastAPI, SQLModel
 - Infra: Docker, Nginx
 - Data: MariaDB, Redis, RabbitMQ
@@ -337,7 +346,9 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **PMS** | 딥러닝 기반 동영상 화질 개선 솔루션 구축
+### **PMS**
+
+#### 딥러닝 기반 동영상 화질 개선 솔루션 구축
 
 ![화질개선 솔루션 메인 화면](assets/projects/pms/pms_main.png)
 
@@ -354,22 +365,15 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### ⭐ 핵심 기여
 
 - 솔루션 기획 및 설계
-
   - 수요기업 요구사항 정의 및 화면 설계
   - 서비스 워크플로우 구축 및 시스템 구성(Docker, Spring Boot, Vue.js, FastAPI, Kafka)
-
 - AI 모델 패키징
-
   - Pytorch 기반 모델 추론 코드를 FastAPI, Docker 컨테이너 구축
   - OpenCV, FFMPEG 기반 인코딩 기능 개발
-
 - 모델 관리 기능 백엔드 개발
-
   - Docker SDK를 활용하여 기학습된 모델 컨테이너 등록/배포 기능 개발
   - Spring Boot 기반 서비스 API와 연계
-
 - 인프라 구축
-
   - Gitlab CI/CD 구축
   - Kafka 서버 구축
   - Docker 컨테이너 기반 웹서버 구축
@@ -386,20 +390,22 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### 🎯 성과 & 결과
 
 - 시스템 성과
-
   - GPU/NPU 기반 모델 추론 환경 구축
   - 딥러닝 모델 관리 및 서빙 방안 제공
-
 - 운용 성과
-
   - AI 반도체 분과 AI 바우처 사업 과제 완료
   - F사 대상 제품 납품
 
 #### 📝 Lessons Learned
 
+- GPU/NPU 장치 기반 모델 MLOps 구축
+- Docker 컨테이너 기반 운영 환경 구축
+
 ---
 
-### **지하공동구 표준관리시스템 개발**
+### **Utility Tunnel Standard Management System**
+
+#### 지하공동구 표준관리시스템 개발
 
 ![지하공동구 표준관리시스템 모델 메인화면](assets/projects/cut/cut_main.png)
 
@@ -415,20 +421,15 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 #### ⭐ 핵심 기여
 
 - 모델 관리 시스템 기획
-
   - 과제 요구사항 분석
   - 모델 관리 시스템 운용 워크플로우 및 프로세스 도식화
   - MLOps 방안 기획
-
 - 딥러닝 모델 PL
-
   - 센서 데이터 기반 예측 모델 구축(Transformer 기반 N-HITS 모델)
   - 모델 연구원 측에 요구사항 및 데이터 전달
   - 최적 모델 선정을 위한 최신 연구 사례 공유 및 분석
   - TTL 인증을 위한 환경 세팅
-
 - 모델 패키징 개발
-
   - Pytorch 기반 모델 학습/추론 코드를 FastAPI, Docker 컨테이너 구축
 
 #### 🔧 핵심 기능
