@@ -90,7 +90,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **SmartCLM**
+### SmartCLM
 
 #### RAG 기반 Agent 웹 서비스 구축
 
@@ -149,7 +149,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **X-ray Detection Solution**
+### X-ray Detection Solution
 
 #### 실시간 영상 분석 + 웹 서비스 구축
 
@@ -204,7 +204,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **Deep Lake**
+### Deep Lake
 
 #### 이미지 데이터셋 관리 기반 MLOps 시스템 구축
 
@@ -272,7 +272,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **Smart Factory Solution**
+### Smart Factory Solution
 
 #### 실시간 시계열 데이터 수집/적재/이상탐지 솔루션
 
@@ -346,7 +346,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **PMS**
+### PMS
 
 #### 딥러닝 기반 동영상 화질 개선 솔루션 구축
 
@@ -403,7 +403,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ---
 
-### **Utility Tunnel Standard Management System**
+### Utility Tunnel Standard Management System
 
 #### 지하공동구 표준관리시스템 개발
 
@@ -510,4 +510,4 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 - ✉️ Email: <veroroot@gmail.com>
 - 🔗 GitHub: <https://github.com/veroroot>
-- 📄 Portpolio: <portfolio.pdf>
+- 📄 Portpolio: <https://veroroot.github.io/portfolio/portfolio.pdf>
