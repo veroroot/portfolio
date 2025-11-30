@@ -50,12 +50,15 @@ jobs:
           npm init -y
           npm install puppeteer
           
-          # Chrome/Chromium 실행에 필요한 시스템 라이브러리 설치
+          # Chrome/Chromium 실행에 필요한 시스템 라이브러리 및 한글 폰트 설치
           # Ubuntu 24.04에서는 libasound2가 libasound2t64로 변경됨
           sudo apt-get update
           sudo apt-get install -y \
             ca-certificates \
             fonts-liberation \
+            fonts-noto \
+            fonts-noto-cjk \
+            fonts-noto-color-emoji \
             libasound2t64 \
             libatk-bridge2.0-0 \
             libatk1.0-0 \
@@ -90,6 +93,9 @@ jobs:
             lsb-release \
             wget \
             xdg-utils
+          
+          # 폰트 캐시 업데이트
+          sudo fc-cache -fv
 
       # ============================
       # 5) Generate PDF from HTML (GitHub Pages 스타일)
@@ -97,40 +103,94 @@ jobs:
       # ============================
       - name: Generate PDF from HTML
         run: |
+          # 빌드된 파일 구조 확인 (디버깅)
+          echo "=== Public directory structure ==="
+          find public -type f -name "*.html" | head -10
+          echo ""
+          
           # PDF 생성 스크립트 작성
           cat > generate-pdf.js << 'EOF'
           const puppeteer = require('puppeteer');
           const http = require('http');
           const fs = require('fs');
           const path = require('path');
+          const url = require('url');
           
           (async () => {
             // 간단한 HTTP 서버 시작 (리소스 로드를 위해)
             const publicDir = path.join(process.cwd(), 'public');
+            
+            // HTML 파일 찾기
+            const possibleFiles = ['README.html', 'index.html'];
+            let htmlFile = null;
+            for (const file of possibleFiles) {
+              const filePath = path.join(publicDir, file);
+              if (fs.existsSync(filePath)) {
+                htmlFile = file;
+                console.log(`Found HTML file: ${file}`);
+                break;
+              }
+            }
+            
+            if (!htmlFile) {
+              // public 디렉토리에서 첫 번째 HTML 파일 찾기
+              const files = fs.readdirSync(publicDir);
+              htmlFile = files.find(f => f.endsWith('.html'));
+              if (!htmlFile) {
+                throw new Error('No HTML file found in public directory');
+              }
+              console.log(`Using HTML file: ${htmlFile}`);
+            }
+            
             const server = http.createServer((req, res) => {
-              let filePath = path.join(publicDir, req.url === '/' ? '/README.html' : req.url);
+              let requestPath = url.parse(req.url).pathname;
               
-              // index.html fallback
-              if (!fs.existsSync(filePath) && req.url === '/') {
-                filePath = path.join(publicDir, 'index.html');
+              // 루트 경로는 HTML 파일로
+              if (requestPath === '/' || requestPath === '') {
+                requestPath = '/' + htmlFile;
               }
               
+              // URL 디코딩 (한글 파일명 처리)
+              try {
+                requestPath = decodeURIComponent(requestPath);
+              } catch (e) {
+                // 디코딩 실패 시 원본 사용
+              }
+              
+              let filePath = path.join(publicDir, requestPath);
+              
+              // 경로 보안 체크
+              if (!filePath.startsWith(publicDir)) {
+                res.writeHead(403);
+                res.end('Forbidden');
+                return;
+              }
+              
+              // 파일 존재 확인
               if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-                const ext = path.extname(filePath);
+                const ext = path.extname(filePath).toLowerCase();
                 const contentType = {
-                  '.html': 'text/html',
-                  '.css': 'text/css',
-                  '.js': 'application/javascript',
+                  '.html': 'text/html; charset=utf-8',
+                  '.css': 'text/css; charset=utf-8',
+                  '.js': 'application/javascript; charset=utf-8',
                   '.png': 'image/png',
                   '.jpg': 'image/jpeg',
                   '.jpeg': 'image/jpeg',
                   '.gif': 'image/gif',
-                  '.svg': 'image/svg+xml'
+                  '.svg': 'image/svg+xml',
+                  '.woff': 'font/woff',
+                  '.woff2': 'font/woff2',
+                  '.ttf': 'font/ttf',
+                  '.otf': 'font/otf'
                 }[ext] || 'application/octet-stream';
                 
-                res.writeHead(200, { 'Content-Type': contentType });
+                res.writeHead(200, { 
+                  'Content-Type': contentType,
+                  'Cache-Control': 'no-cache'
+                });
                 fs.createReadStream(filePath).pipe(res);
               } else {
+                console.log(`File not found: ${filePath}`);
                 res.writeHead(404);
                 res.end('Not found');
               }
@@ -146,14 +206,76 @@ jobs:
             // Puppeteer로 PDF 생성
             const browser = await puppeteer.launch({
               headless: true,
-              args: ['--no-sandbox', '--disable-setuid-sandbox']
+              args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-gpu',
+                '--font-render-hinting=none'
+              ]
             });
             const page = await browser.newPage();
             
+            // 한글 폰트 설정
+            await page.evaluateOnNewDocument(() => {
+              Object.defineProperty(navigator, 'languages', {
+                get: () => ['ko-KR', 'ko', 'en-US', 'en']
+              });
+            });
+            
             // 로컬 서버의 URL로 접근
+            console.log('Loading page: http://localhost:8080/');
             await page.goto('http://localhost:8080/', { 
               waitUntil: 'networkidle0', 
               timeout: 60000 
+            });
+            
+            // HTML 내 상대 경로를 절대 경로로 변환
+            await page.evaluate(() => {
+              // 이미지 태그의 src 속성 수정
+              const images = document.querySelectorAll('img');
+              images.forEach(img => {
+                if (img.src && !img.src.startsWith('http') && !img.src.startsWith('data:')) {
+                  const src = img.getAttribute('src');
+                  if (src && !src.startsWith('/')) {
+                    // 상대 경로를 절대 경로로 변환
+                    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+                    img.src = basePath + src;
+                  } else if (src && src.startsWith('./')) {
+                    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+                    img.src = basePath + src.substring(2);
+                  }
+                }
+              });
+              
+              // 링크 태그의 href 속성도 확인 (필요시)
+              const links = document.querySelectorAll('a[href]');
+              links.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:')) {
+                  if (!href.startsWith('/')) {
+                    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+                    link.href = basePath + href;
+                  }
+                }
+              });
+            });
+            
+            // 추가 대기 (이미지 로딩 완료 대기)
+            await page.waitForTimeout(3000);
+            
+            // 모든 이미지가 로드될 때까지 대기
+            await page.evaluate(() => {
+              return Promise.all(
+                Array.from(document.images).map(img => {
+                  if (img.complete) return Promise.resolve();
+                  return new Promise((resolve, reject) => {
+                    img.onload = resolve;
+                    img.onerror = resolve; // 에러가 나도 계속 진행
+                    setTimeout(resolve, 5000); // 최대 5초 대기
+                  });
+                })
+              );
             });
             
             // PDF 생성 옵션
@@ -161,6 +283,7 @@ jobs:
               path: 'portfolio.pdf',
               format: 'A4',
               printBackground: true,
+              preferCSSPageSize: false,
               margin: {
                 top: '20mm',
                 right: '15mm',
