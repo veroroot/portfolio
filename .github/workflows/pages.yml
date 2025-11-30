@@ -70,7 +70,9 @@ jobs:
       # 5) Copy PDF to public folder (Jekyll 빌드 후)
       # ============================
       - name: Copy PDF to public folder
-        run: cp portfolio.pdf public/portfolio.pdf
+        run: |
+          chmod -R u+w public || true
+          cp portfolio.pdf public/portfolio.pdf
 
       # ============================
       # 6) Upload artifact for Pages

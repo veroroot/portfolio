@@ -53,7 +53,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 - Pytorch, Scikit-learn
 - YOLO series, LSTM/RNN/Transformer 기반 시계열 모델
 - 데이터 파이프라인 구축 및 실시간 처리(Pandas, Numpy, Opencv, FFMPEG, KoNLPY)
-- GPU, NPU 장치 환경 구축(cuda, Furiosa SDK)
+- GPU, NPU 장치 환경 구축(CUDA, Furiosa SDK)
 
 ### Infra/DevOps
 
