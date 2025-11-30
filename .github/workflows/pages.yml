@@ -67,11 +67,12 @@ jobs:
           destination: ./public
 
       # ============================
-      # 5) Copy PDF to public folder (Jekyll 빌드 후)
+      # 5) Copy PDF to public root (Jekyll 빌드 후)
+      # Jekyll이 생성한 public 폴더의 소유권을 변경한 후 PDF 복사
       # ============================
-      - name: Copy PDF to public folder
+      - name: Copy PDF to public root
         run: |
-          chmod -R u+w public || true
+          sudo chown -R $USER:$USER public
           cp portfolio.pdf public/portfolio.pdf
 
       # ============================
