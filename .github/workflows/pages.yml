@@ -145,6 +145,11 @@ jobs:
             const server = http.createServer((req, res) => {
               let requestPath = url.parse(req.url).pathname;
               
+              // Jekyll baseurl 제거 (/portfolio/ prefix 제거)
+              if (requestPath.startsWith('/portfolio/')) {
+                requestPath = requestPath.substring('/portfolio'.length);
+              }
+              
               // 루트 경로는 HTML 파일로
               if (requestPath === '/' || requestPath === '') {
                 requestPath = '/' + htmlFile;
@@ -230,39 +235,52 @@ jobs:
               timeout: 60000 
             });
             
-            // HTML 내 상대 경로를 절대 경로로 변환
+            // HTML 내 경로 수정 (/portfolio/ prefix 제거)
             await page.evaluate(() => {
+              // base 태그 제거 또는 수정
+              const baseTag = document.querySelector('base');
+              if (baseTag && baseTag.href.includes('/portfolio/')) {
+                baseTag.href = baseTag.href.replace('/portfolio', '');
+              }
+              
               // 이미지 태그의 src 속성 수정
               const images = document.querySelectorAll('img');
               images.forEach(img => {
-                if (img.src && !img.src.startsWith('http') && !img.src.startsWith('data:')) {
-                  const src = img.getAttribute('src');
-                  if (src && !src.startsWith('/')) {
-                    // 상대 경로를 절대 경로로 변환
-                    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-                    img.src = basePath + src;
-                  } else if (src && src.startsWith('./')) {
-                    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-                    img.src = basePath + src.substring(2);
+                const src = img.getAttribute('src');
+                if (src) {
+                  // /portfolio/ prefix 제거
+                  if (src.startsWith('/portfolio/')) {
+                    img.src = src.substring('/portfolio'.length);
+                  } else if (src.startsWith('/portfolio')) {
+                    img.src = src.substring('/portfolio'.length) || '/';
                   }
                 }
               });
               
-              // 링크 태그의 href 속성도 확인 (필요시)
-              const links = document.querySelectorAll('a[href]');
+              // CSS 링크 수정
+              const links = document.querySelectorAll('link[rel="stylesheet"]');
               links.forEach(link => {
                 const href = link.getAttribute('href');
-                if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:')) {
-                  if (!href.startsWith('/')) {
-                    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-                    link.href = basePath + href;
-                  }
+                if (href && href.startsWith('/portfolio/')) {
+                  link.href = href.substring('/portfolio'.length);
+                }
+              });
+              
+              // JS 스크립트 수정
+              const scripts = document.querySelectorAll('script[src]');
+              scripts.forEach(script => {
+                const src = script.getAttribute('src');
+                if (src && src.startsWith('/portfolio/')) {
+                  script.src = src.substring('/portfolio'.length);
                 }
               });
             });
             
-            // 추가 대기 (이미지 로딩 완료 대기)
-            await page.waitForTimeout(3000);
+            // 페이지 리로드하여 수정된 경로로 리소스 로드
+            await page.reload({ waitUntil: 'networkidle0', timeout: 60000 });
+            
+            // 추가 대기 (이미지 로딩 완료 대기) - waitForTimeout 대신 Promise 사용
+            await new Promise(resolve => setTimeout(resolve, 2000));
             
             // 모든 이미지가 로드될 때까지 대기
             await page.evaluate(() => {
