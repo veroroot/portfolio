@@ -57,7 +57,7 @@ FastAPI 기반 서버 구축, 데이터 구조 설계, AI 모델 서빙 등 서�
 
 ### Infra/DevOps
 
-- Docker, Nginx
+- Docker, Kubernetes, Cloud(Terraform)
 - CI/CD 구축(Gitlab, Github, Jenkins, AWS 서비스)
 - Server Architecture Design(On-premise, AWS)
 
