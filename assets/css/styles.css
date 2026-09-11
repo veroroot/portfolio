@@ -203,15 +203,19 @@ body.modal-open {
 @media print {
   html,
   body {
-    background: #fff !important;
-    color: #111827 !important;
+    background: #070b12 !important;
+    color: #e8eef6 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .arch-slot::after,
-  .nav-blur,
-  .bg-grid,
-  .bg-glow,
-  .no-print,
+  #site-nav,
   .modal-overlay {
     display: none !important;
   }
@@ -220,14 +224,13 @@ body.modal-open {
     display: block !important;
   }
 
-  a {
-    color: #111827 !important;
+  .case-card,
+  .arch-slot,
+  .adjacent-card {
+    break-inside: avoid;
   }
 
-  .case-card,
-  .arch-slot {
-    break-inside: avoid;
-    box-shadow: none !important;
-    border-color: #d1d5db !important;
+  a {
+    color: #8fb4ff !important;
   }
 }

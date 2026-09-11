@@ -389,10 +389,35 @@ jobs:
             });
             console.log('Final check:', JSON.stringify(finalCheck, null, 2));
             
-            // 디버깅을 위한 스크린샷 저장 (선택사항)
-            // await page.screenshot({ path: 'debug-screenshot.png', fullPage: true });
+            await page.emulateMediaType('screen');
+            await page.evaluate(() => {
+              document.querySelectorAll('[data-accordion-panel]').forEach((panel) => {
+                panel.classList.add('is-open');
+              });
+              const nav = document.getElementById('site-nav');
+              if (nav) nav.style.display = 'none';
+              document.querySelectorAll('.modal-overlay').forEach((el) => {
+                el.style.display = 'none';
+              });
+            });
+            await page.addStyleTag({
+              content: `
+                html, body, #page-shell {
+                  background: #070b12 !important;
+                  color: #e8eef6 !important;
+                }
+                * {
+                  -webkit-print-color-adjust: exact !important;
+                  print-color-adjust: exact !important;
+                }
+                #site-nav, .modal-overlay, .arch-slot::after {
+                  display: none !important;
+                }
+                .accordion-panel { display: block !important; }
+                .invisible { visibility: visible !important; }
+              `
+            });
             
-            // PDF 생성 옵션 (폰트와 이미지가 제대로 포함되도록 설정)
             await page.pdf({
               path: 'portfolio.pdf',
               format: 'A4',
@@ -400,12 +425,11 @@ jobs:
               preferCSSPageSize: false,
               displayHeaderFooter: false,
               margin: {
-                top: '20mm',
-                right: '15mm',
-                bottom: '20mm',
-                left: '15mm'
+                top: '12mm',
+                right: '12mm',
+                bottom: '12mm',
+                left: '12mm'
               },
-              // 폰트와 이미지 포함을 위한 추가 옵션
               tagged: false,
               outline: false
             });
