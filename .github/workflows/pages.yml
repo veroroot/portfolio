@@ -235,6 +235,10 @@ jobs:
               waitUntil: 'networkidle0', 
               timeout: 60000 
             });
+            await page.waitForFunction(
+              () => document.documentElement.dataset.ready === 'true',
+              { timeout: 30000 }
+            );
             
             // HTML 내 경로 수정 (/portfolio/ prefix 제거)
             await page.evaluate(() => {

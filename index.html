@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장진원 | AI Tech Lead &amp; MLOps System Architect</title>
+    <meta name="description" content="비즈니스 문제를 아키텍처와 AI 시스템으로 해결하는 엔지니어." />
+    <meta name="theme-color" content="#070b12" />
+    <meta property="og:title" content="장진원 | AI Tech Lead & MLOps System Architect" />
+    <meta property="og:description" content="비즈니스 문제를 아키텍처와 AI 시스템으로 해결하는 엔지니어" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070b12'/%3E%3Cpath d='M8 22V10h3.2l4.8 8.2V10H19v12h-3.2L11 13.7V22H8z' fill='%235b8def'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#070b12",
+              panel: "#0d1520",
+              line: "#243044",
+              mist: "#8b9cb3",
+              snow: "#e8eef6",
+              signal: "#5b8def",
+              "signal-soft": "#8fb4ff",
+            },
+            fontFamily: {
+              sans: ["Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "sans-serif"],
+              mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="bg-ink text-snow font-sans antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-signal focus:px-3 focus:py-2 focus:text-ink">본문으로 건너뛰기</a>
+    <p id="content-error" class="hidden mx-auto max-w-6xl px-5 pt-4 text-sm text-red-300 md:px-8"></p>
+    <div class="pointer-events-none fixed inset-0 bg-glow"></div>
+    <div class="pointer-events-none fixed inset-0 bg-grid opacity-70"></div>
+
+    <div id="page-shell" class="invisible">
+      <header id="site-nav" class="nav-blur no-print sticky top-0 z-40 border-line">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 md:px-8">
+          <a href="#top" class="flex items-center gap-2.5">
+            <span class="grid h-8 w-8 place-items-center rounded-lg border border-line bg-panel font-mono text-xs text-signal">JW</span>
+            <span class="text-sm font-medium tracking-tight" data-name>장진원</span>
+          </a>
+          <nav class="hidden items-center gap-7 text-sm text-mist md:flex">
+            <a class="link-underline hover:text-snow" href="#strengths">Strength</a>
+            <a class="link-underline hover:text-snow" href="#projects">Projects</a>
+            <a class="link-underline hover:text-snow" href="#side-project">Side Project</a>
+            <a class="link-underline hover:text-snow" href="#experience">Experience</a>
+            <a class="link-underline hover:text-snow" href="#talks">Talks</a>
+            <a class="link-underline hover:text-snow" href="#contact">Contact</a>
+          </nav>
+          <div class="hidden items-center gap-3 md:flex">
+            <a class="rounded-full border border-line px-3.5 py-1.5 text-sm text-mist transition hover:border-signal hover:text-snow" data-github href="https://github.com/veroroot" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="rounded-full bg-signal px-3.5 py-1.5 text-sm font-medium text-ink transition hover:bg-signal-soft" data-email href="mailto:veroroot@gmail.com">이메일</a>
+          </div>
+          <button id="nav-toggle" class="ml-auto inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-snow/35 bg-panel text-snow md:hidden" aria-expanded="false" aria-controls="mobile-nav" aria-label="메뉴 열기">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+          </button>
+        </div>
+        <div id="mobile-nav" class="hidden border-t border-line px-5 py-4 md:hidden">
+          <div class="flex flex-col gap-3 text-sm text-mist">
+            <a href="#strengths">Strength</a>
+            <a href="#projects">Projects</a>
+            <a href="#side-project">Side Project</a>
+            <a href="#experience">Experience</a>
+            <a href="#talks">Talks</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </header>
+
+      <main id="main">
+        <section id="top" class="relative mx-auto max-w-6xl px-5 pb-20 pt-16 md:px-8 md:pb-28 md:pt-24">
+          <p id="hero-kicker" class="hero-kicker mb-5 font-mono text-[11px] uppercase text-signal"></p>
+          <h1 id="hero-title" class="max-w-4xl text-[1.85rem] font-semibold leading-[1.25] tracking-tight text-snow sm:text-4xl md:text-6xl md:leading-[1.18]"></h1>
+          <p id="hero-summary" class="mt-7 w-full max-w-2xl text-[15px] leading-7 text-mist sm:text-[17px] md:text-lg"></p>
+          <div class="mt-8 flex flex-wrap items-center gap-3 text-sm">
+            <a id="hero-primary-cta" class="rounded-full bg-signal px-5 py-2.5 font-medium text-ink transition hover:brightness-110" href="#projects"></a>
+            <a id="hero-secondary-cta" data-pdf class="rounded-full border border-line px-5 py-2.5 text-mist transition hover:border-signal hover:text-snow" href="portfolio.pdf"></a>
+          </div>
+          <dl id="hero-stats" class="mt-12 grid max-w-xl grid-cols-1 gap-5 border-t border-line pt-8 text-sm sm:grid-cols-3 sm:gap-6"></dl>
+        </section>
+
+        <section id="strengths" class="relative mx-auto max-w-6xl px-5 pb-24 md:px-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">01 — Strength Points</p>
+          <h2 id="strengths-heading" class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl"></h2>
+          <div id="strength-list" class="mt-8 grid gap-4 md:grid-cols-3"></div>
+        </section>
+
+        <section id="projects" class="relative mx-auto max-w-6xl px-5 pb-24 md:px-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">02 — Key Projects</p>
+          <h2 id="projects-heading" class="mt-2 max-w-2xl text-2xl font-semibold tracking-tight md:text-3xl"></h2>
+          <p id="projects-intro" class="mt-3 max-w-2xl text-sm leading-6 text-mist md:text-base"></p>
+          <div id="project-list"></div>
+          <div class="mt-8">
+            <p id="adjacent-heading" class="font-mono text-[11px] uppercase tracking-[0.18em] text-mist"></p>
+            <p id="adjacent-hint" class="mt-1 mb-4 text-xs text-mist"></p>
+            <div id="adjacent-list" class="grid gap-3 md:grid-cols-2"></div>
+          </div>
+        </section>
+
+        <section id="side-project" class="relative mx-auto max-w-6xl px-5 pb-24 md:px-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">03 — Side Project</p>
+          <h2 id="side-heading" class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl"></h2>
+          <article class="case-card mt-8 rounded-2xl p-6 md:grid md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:p-8">
+            <div>
+              <p id="side-kicker" class="font-mono text-xs text-signal"></p>
+              <h3 id="side-title" class="mt-2 text-xl font-semibold md:text-2xl"></h3>
+              <p id="side-subtitle" class="mt-1 text-sm text-mist"></p>
+              <p id="side-summary" class="mt-5 text-[15px] leading-7 text-snow/90"></p>
+              <ul id="side-highlights" class="mt-5 space-y-3 text-sm leading-6 text-mist"></ul>
+              <div id="side-tech" class="mt-5 flex flex-wrap gap-2"></div>
+            </div>
+            <button id="side-diagram" type="button" class="arch-slot mt-8 min-h-[220px] rounded-xl p-5 text-left md:mt-0" data-arch-trigger></button>
+          </article>
+        </section>
+
+        <section id="experience" class="relative mx-auto max-w-6xl px-5 pb-24 md:px-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">04 — Experience</p>
+          <h2 id="experience-heading" class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl"></h2>
+          <div id="experience-recent" class="mt-8 space-y-4"></div>
+          <div class="mt-4 rounded-2xl border border-line bg-panel/60">
+            <button type="button" class="flex w-full items-center justify-between px-6 py-4 text-left" data-accordion-btn aria-expanded="false">
+              <span>
+                <span id="earlier-title" class="block text-sm font-semibold"></span>
+                <span id="earlier-summary" class="mt-0.5 block text-xs text-mist"></span>
+              </span>
+              <span class="font-mono text-xs text-signal" data-accordion-label>펼치기</span>
+            </button>
+            <div class="accordion-panel border-t border-line px-6 pb-5 pt-4" data-accordion-panel>
+              <ul id="experience-earlier" class="space-y-4 text-sm leading-6 text-mist"></ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="stack" class="relative mx-auto max-w-6xl px-5 pb-24 md:px-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">05 — Stack</p>
+          <h2 id="stack-heading" class="mt-2 text-2xl font-semibold tracking-tight"></h2>
+          <div id="stack-list" class="mt-8 grid gap-4 md:grid-cols-3"></div>
+        </section>
+
+        <section id="talks" class="relative mx-auto max-w-6xl px-5 pb-24 md:px-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">06 — Talks</p>
+          <h2 id="talks-heading" class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl"></h2>
+          <p id="talks-intro" class="mt-3 max-w-2xl text-sm leading-6 text-mist"></p>
+          <div id="talks-list" class="mt-8 grid gap-4 md:grid-cols-2"></div>
+        </section>
+
+        <section id="contact" class="relative mx-auto max-w-6xl px-5 pb-28 md:px-8">
+          <div class="case-card rounded-2xl px-6 py-10 md:px-10">
+            <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">Contact</p>
+            <h2 id="contact-heading" class="mt-3 text-2xl font-semibold tracking-tight md:text-3xl"></h2>
+            <p id="contact-body" class="mt-3 max-w-xl text-sm leading-6 text-mist"></p>
+            <div class="mt-6 flex flex-wrap gap-3 text-sm">
+              <a class="rounded-full bg-signal px-5 py-2.5 font-medium text-ink" data-email="text" href="mailto:veroroot@gmail.com"></a>
+              <a class="rounded-full border border-line px-5 py-2.5 text-mist hover:text-snow" data-github="label" href="https://github.com/veroroot" target="_blank" rel="noopener noreferrer"></a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="no-print border-t border-line">
+        <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-xs text-mist md:flex-row md:items-center md:justify-between md:px-8">
+          <p>© <span id="year">2026</span> <span id="footer-credits"></span></p>
+        </div>
+      </footer>
+    </div>
+
+    <div id="detail-modal" class="modal-overlay no-print" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+      <div class="modal-panel p-5 md:p-7">
+        <div class="mb-5 flex items-start justify-between gap-4">
+          <div>
+            <p id="detail-kicker" class="font-mono text-xs text-signal"></p>
+            <h3 id="detail-title" class="mt-1 text-xl font-semibold md:text-2xl"></h3>
+            <p id="detail-subtitle" class="mt-1 text-sm text-mist"></p>
+          </div>
+          <button id="detail-close" class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-line text-mist hover:text-snow" aria-label="닫기">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+        <p id="detail-summary" class="text-[15px] leading-7 text-snow/90"></p>
+        <div id="detail-tech" class="mt-4 flex flex-wrap gap-2"></div>
+        <div class="mt-6 grid gap-6 lg:grid-cols-[1fr_1fr]">
+          <div>
+            <h4 class="text-sm font-semibold text-signal">주요 해결</h4>
+            <ul id="detail-solutions" class="mt-3 space-y-3 text-sm leading-6 text-mist"></ul>
+            <p id="detail-outcomes" class="mt-4 text-sm leading-6 text-mist"></p>
+          </div>
+          <div id="detail-gallery" class="grid gap-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="arch-modal" class="modal-overlay no-print" role="dialog" aria-modal="true" aria-labelledby="arch-modal-title">
+      <div class="modal-panel p-4 md:p-6">
+        <div class="mb-4 flex items-start justify-between gap-4">
+          <div>
+            <h3 id="arch-modal-title" class="text-lg font-semibold">아키텍처 다이어그램</h3>
+            <p id="arch-modal-caption" class="mt-1 text-xs leading-5 text-mist"></p>
+          </div>
+          <button id="arch-modal-close" class="grid h-9 w-9 place-items-center rounded-lg border border-line text-mist hover:text-snow" aria-label="닫기">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+        <img id="arch-modal-image" alt="" class="hidden w-full rounded-lg border border-line" />
+        <div id="arch-modal-placeholder" class="grid min-h-[280px] place-items-center rounded-lg border border-dashed border-line bg-panel text-center">
+          <div>
+            <p class="text-sm font-medium">이미지 대기 중</p>
+            <p class="mt-1 text-xs text-mist">assets/projects/&lt;id&gt;/architecture.png 에 넣으면 표시됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template id="tpl-stat">
+      <div>
+        <dt class="font-mono text-[11px] uppercase tracking-wider text-mist" data-label></dt>
+        <dd class="mt-1.5 font-medium" data-value></dd>
+      </div>
+    </template>
+    <template id="tpl-strength">
+      <article class="case-card rounded-2xl p-6">
+        <div class="icon-tile" data-icon></div>
+        <h3 class="mt-5 text-lg font-semibold" data-title></h3>
+        <p class="mt-3 text-sm leading-6 text-mist" data-body></p>
+      </article>
+    </template>
+    <template id="tpl-badge">
+      <span class="badge"></span>
+    </template>
+    <template id="tpl-solution">
+      <li>
+        <strong class="text-snow" data-title></strong>.
+        <span data-body></span>
+      </li>
+    </template>
+    <template id="tpl-project">
+      <article class="case-card rounded-2xl p-6 md:p-8">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <p class="font-mono text-xs text-signal"><span data-index></span> / <span data-period></span></p>
+            <h3 class="mt-2 text-xl font-semibold md:text-2xl" data-title></h3>
+            <p class="mt-1 text-sm text-mist" data-subtitle></p>
+          </div>
+          <span class="rounded-full border border-line px-3 py-1 text-xs text-mist" data-label></span>
+        </div>
+        <p class="mt-6 max-w-3xl text-[15px] leading-7 text-snow/90" data-summary></p>
+        <div class="mt-5 flex flex-wrap gap-2" data-tech></div>
+        <div class="mt-8 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <h4 class="text-sm font-semibold text-signal">주요 해결</h4>
+            <ul class="mt-4 space-y-4 text-sm leading-6 text-mist" data-solutions></ul>
+          </div>
+          <button type="button" class="arch-slot min-h-[240px] rounded-xl p-4 text-left" data-arch-trigger></button>
+        </div>
+      </article>
+    </template>
+    <template id="tpl-adjacent">
+      <button type="button" class="adjacent-card flex w-full items-stretch gap-4 rounded-xl border border-line bg-panel/70 p-3 text-left md:p-4" data-adjacent-trigger>
+        <img data-thumb alt="" class="hidden h-24 w-36 shrink-0 rounded-lg border border-line object-cover" />
+        <span class="min-w-0 flex-1 py-1">
+          <span class="block text-sm font-medium" data-title></span>
+          <span class="mt-1 block text-xs leading-5 text-mist" data-body></span>
+          <span class="mt-2 block font-mono text-[11px] text-signal">자세히 보기 →</span>
+        </span>
+      </button>
+    </template>
+    <template id="tpl-talk">
+      <article class="case-card overflow-hidden rounded-2xl">
+        <button type="button" class="arch-slot h-36 w-full rounded-none p-0 text-left" data-photo></button>
+        <div class="p-4">
+          <p class="font-mono text-[11px] text-signal"><span data-period></span> · <span data-place></span></p>
+          <h3 class="mt-1.5 text-sm font-semibold leading-5" data-title></h3>
+          <p class="mt-2 text-xs leading-5 text-mist" data-body></p>
+        </div>
+      </article>
+    </template>
+    <template id="tpl-gallery">
+      <button type="button" class="arch-slot min-h-[160px] rounded-xl p-0 text-left" data-arch-trigger>
+        <img alt="" class="h-full min-h-[160px] w-full rounded-xl object-cover" />
+      </button>
+    </template>
+    <template id="tpl-highlight">
+      <li><strong class="text-snow" data-title></strong>. <span data-body></span></li>
+    </template>
+    <template id="tpl-experience">
+      <article class="case-card rounded-2xl p-6 md:p-7">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 class="text-lg font-semibold" data-title></h3>
+          <p class="font-mono text-xs text-mist" data-period></p>
+        </div>
+        <p class="mt-3 text-sm leading-6 text-mist" data-body></p>
+      </article>
+    </template>
+    <template id="tpl-earlier">
+      <li>
+        <strong class="text-snow" data-title></strong>
+        <span class="font-mono text-xs" data-period></span>
+        <p data-body></p>
+      </li>
+    </template>
+    <template id="tpl-stack">
+      <div class="rounded-2xl border border-line bg-panel/70 p-5">
+        <h3 class="text-sm font-semibold" data-title></h3>
+        <p class="mt-3 text-sm leading-6 text-mist" data-body></p>
+      </div>
+    </template>
+
+    <div class="hidden h-20 h-24 h-36 h-full min-h-[160px] min-h-[200px] min-h-[240px] w-28 w-36 w-full shrink-0 rounded-xl object-cover p-0"></div>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

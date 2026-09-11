@@ -1,0 +1,325 @@
+# 포트폴리오 텍스트는 이 파일만 수정하면 됩니다.
+# 저장 후 브라우저를 새로고침하세요. (로컬: python3 -m http.server)
+#
+# 다이어그램은 HTML을 고치지 마세요.
+# assets/projects/<id>/ 폴더에 아래 이름 중 하나로 넣으면 자동 표시됩니다.
+#   architecture.png (권장)  또는 .jpg / .webp / .svg
+#   <id>_architecture.png     예: smartclm_architecture.png
+# id 예시: mlops, isoda, smartclm, saegim
+
+name: 장진원
+role: AI Tech Lead · MLOps System Architect
+email: veroroot@gmail.com
+github: https://github.com/veroroot
+github_label: github.com/veroroot
+pdf: portfolio.pdf
+
+hero:
+  kicker: AI Tech Lead · MLOps System Architect
+  title: |-
+    비즈니스 문제를
+    아키텍처와 AI 시스템으로
+    해결하는 엔지니어
+  summary: |-
+    요구사항을 기능 목록으로 옮기지 않습니다. 현장의 제약, 운영 비용, 모델 품질을
+    하나의 파이프라인으로 묶고, 팀이 설명할 수 있는 시스템으로 남깁니다.
+  primary_cta: 문제 해결 사례 보기
+  secondary_cta: PDF 포트폴리오
+  stats:
+    - label: Focus
+      value: MLOps / Agent
+    - label: Domain
+      value: AI · 제조 · 법무
+    - label: Stack
+      value: FastAPI · AWS
+
+strengths:
+  heading: 한 줄로 맡길 수 있는 세 가지
+  items:
+    - icon: infra
+      title: End-to-End MLOps 인프라
+      body: Terraform · CloudFormation 기반 IaC로 AWS 인프라를 올리고, FastAPI 백엔드부터 딥러닝 모델 서빙까지 학습-평가-배포 루프를 하나의 시스템으로 설계합니다.
+    - icon: agent
+      title: LangGraph Multi-Agent 도입
+      body: LangGraph · LangChain · CrewAI로 Agentic AI와 RAG를 설계합니다. LLM뿐 아니라 CV, Time Series, NLP 모델을 프로덕션 워크플로에 붙인 경험이 있습니다.
+    - icon: leadership
+      title: 리더십 · 커뮤니케이션
+      body: 기획·디자인 공백이 있어도 고객 핵심 요구를 아키텍처로 번역합니다. 이해관계자에게 구조를 설명하고 범위를 조율해, 팀이 실제로 배포할 수 있는 결정을 만듭니다.
+
+projects:
+  heading: 어떤 제약이 있었고, 시스템을 어떻게 바꿨는지
+  intro: 타임라인이 아니라 트러블슈팅입니다. 세 건 모두 인프라, 모델, API가 한 흐름으로 움직여야 끝나는 문제였습니다.
+  items:
+    - id: mlops
+      period: 2026.04 — 2026.10
+      title: 글로벌 자동차 부품 제조사 MLOps
+      subtitle: 아이엔소프트 · Acoustic / Vision 모델 운용 시스템
+      label: Production MLOps
+      summary: AWS 위에서 Acoustic 파이프라인을 유지하고, Vision 데이터 학습-배포 루프를 새로 얹는 과제였습니다. 현장 카메라와 SageMaker가 서로 다른 언어를 쓰고 있으면, 모델 정확도는 실험실 지표로만 남습니다.
+      tech:
+        - Python 3.11
+        - FastAPI
+        - PyTorch
+        - SMP
+        - YOLO
+        - SageMaker
+        - ECS
+        - Lambda
+        - Step Functions
+        - CloudWatch
+      solutions:
+        - title: 현장 ROI ↔ 학습 루프 단절
+          body: SageMaker 지표를 대시보드 UI에 렌더링하고 현장 카메라 ROI를 학습 데이터와 연동해, 재학습이 현장 조건 위에서 돌도록 파이프라인을 닫았습니다.
+        - title: Segmentation 전이학습 비용
+          body: 전이학습 전략을 고정하고 Loss, Early Stopping, AMP를 도입해 인스턴스 사용을 줄이면서 학습 효율을 올렸습니다.
+        - title: 운영 가시성
+          body: 수집-전처리-학습-평가-배포 구간을 Step Functions 중심으로 묶고, 대시보드가 연동할 Restful API를 FastAPI로 제공했습니다.
+      diagram_title: 글로벌 자동차 부품 제조사 MLOps 아키텍처
+      diagram_caption: 데이터 수집부터 SageMaker 학습·배포, 대시보드 API까지의 파이프라인 다이어그램입니다.
+
+    - id: isoda
+      period: 2026.03 — 진행중
+      title: iSODA cowork
+      subtitle: 아이엔소프트 · Agent 기반 인시던트 탐지·대응
+      label: Multi-Agent Ops
+      summary: 장애를 챗봇에게 물어보는 시스템이 아니라, 탐지 Agent가 상황을 읽고 대응 Agent가 Runbook · Playbook을 실행하는 오케스트레이션이 필요했습니다.
+      tech:
+        - Python 3.11
+        - FastAPI
+        - LangGraph
+        - LangChain
+        - vLLM
+        - Elasticsearch
+        - LangFuse
+        - Grafana
+        - Prometheus
+        - PostgreSQL
+        - Docker
+      solutions:
+        - title: 선형 Agent의 한계
+          body: 일방향 질의응답은 인시던트 분기를 표현하지 못합니다. LangGraph 기반 Multi-Agent로 상황별 tool을 동적으로 호출하고 시나리오를 라우팅하도록 바꿨습니다.
+        - title: PoC를 운영 언어로
+          body: 탐지 Agent를 검증할 데모 데이터와 시나리오를 먼저 설계해, 인프라(API · DB · 모니터링)가 실제 장애 흐름을 타도록 맞췄습니다.
+        - title: 관측 가능성
+          body: LangFuse와 Grafana · Prometheus를 같은 레이어에 두어, Agent 궤적과 시스템 메트릭을 함께 볼 수 있게 했습니다.
+      diagram_title: iSODA cowork Multi-Agent 아키텍처
+      diagram_caption: 탐지 Agent, 대응 Agent, Runbook/Playbook 라우팅과 관측 스택을 담은 다이어그램입니다.
+
+    - id: smartclm
+      period: 2025.07 — 2025.09
+      title: SmartCLM
+      subtitle: BSG 파트너스 · L사 법무팀 PoC · AWS Marketplace SaaS
+      label: RAG · Agentic AI
+      summary: 계약 생성 · 검토 · 승인을 LLM 채팅으로 끝내는 제품이 아니었습니다. 문서를 파싱하고, 조항을 비교하고, 위험 조항을 남기는 작업 그래프가 필요했습니다.
+      tech:
+        - Python 3.13
+        - FastAPI
+        - SQLAlchemy
+        - LangChain
+        - LangGraph
+        - Bedrock
+        - CloudFormation
+        - ECS
+        - RDS PGVector
+        - Redis
+      solutions:
+        - title: 프롬프트 난립
+          body: LangChain으로 프롬프트와 Agent를 모듈화해, 계약 작업 유형이 늘어도 한 파일에 로직이 쌓이지 않게 만들었습니다.
+        - title: 단일 Agent의 복잡도
+          body: Route / Summary / Compare / Draft / Violation Agent를 LangGraph로 분리해 검토·승인 같은 문서 작업을 그래프 경로로 타게 했습니다.
+        - title: RAG 품질과 보안
+          body: 업로드 → PDF 변환 → 파싱 → Chunk/Embedding → PGVector · S3 적재 파이프라인을 두고, Agent는 DB 직접 연결 대신 API tool만 사용하도록 막았습니다.
+        - title: 제품화
+          body: AWS Marketplace entitlement · metering을 구현하고, L사 법무팀 PoC에서 정량·정성 지표를 통과했습니다.
+      diagram_title: SmartCLM 시스템 아키텍처
+      diagram_caption: Cognito, ECS Agent 클러스터, Step Functions 문서 파이프라인, PGVector Knowledge Base로 구성된 운영 아키텍처입니다.
+
+adjacent:
+  heading: Adjacent production work
+  hint: 카드를 누르면 화면과 아키텍처, 해결 내용이 열립니다.
+  items:
+    - id: xray
+      title: X-ray Detection
+      period: 2024.02 — 2025.05
+      subtitle: 인씨스 · 실시간 X-ray AI Detection
+      label: Vision · Streaming
+      body: 멀티스레드 + WebSocket으로 프레임 드롭 없는 실시간 Detection 스트림. OpenCV 캡처보드 해상도 유지.
+      summary: 현장 X-ray 장비 영상을 받아 딥러닝 Detection을 입히고, 웹·데스크톱 클라이언트로 1초 지연 안에 밀어 넣는 모니터링 시스템이었습니다.
+      tech:
+        - FastAPI
+        - WebSocket
+        - PyTorch
+        - YOLO v11
+        - OpenCV
+        - Redis
+        - MariaDB
+        - Docker
+        - Nginx
+        - PyInstaller
+      solutions:
+        - title: 프레임 드롭
+          body: 다중 스레드로 수신·추론·송출을 분리하고 WebSocket으로 밀어, 프레임이 죽지 않는 실시간 스트림을 만들었습니다.
+        - title: 캡처보드 해상도
+          body: OpenCV 설정을 원본 해상도에 맞춰 현장 장비가 주는 픽셀을 버리지 않게 했습니다.
+        - title: 장애 복원
+          body: Redis Pub/Sub로 상태를 두고, 끊기면 클라이언트가 자동 재연결·복원되도록 맞췄습니다.
+      outcomes: 1초 지연 내 전송, 과거 영상 열람·통계 모니터링, I사 납품 계약 검토.
+
+    - id: deeplake
+      title: 딥레이크
+      period: 2024.06 — 2025.05
+      subtitle: 에이아이네이션 · 이미지 데이터셋 MLOps
+      label: MLOps · Cloud
+      body: 이미지 데이터셋 MLOps. Cognito RBAC, S3/SQS/Lambda 대용량 업로드, 업로드 응답 35% 개선.
+      summary: 워크스페이스·프로젝트 권한 위에서 대용량 이미지를 모으고, 라벨링한 뒤 학습으로 넘기는 데이터셋 관리 시스템이었습니다.
+      tech:
+        - FastAPI
+        - AWS ECS
+        - Cognito
+        - S3
+        - SQS
+        - Lambda
+        - DynamoDB
+        - SageMaker
+        - Redis
+      solutions:
+        - title: 권한과 초대
+          body: 워크스페이스/프로젝트 멤버 테이블과 초대 토큰을 설계한 뒤 Cognito로 인증을 옮겼습니다.
+        - title: 대용량 업로드
+          body: S3 · SQS · Lambda로 업로드/다운로드를 비동기화해 API 응답을 35% 줄였습니다.
+        - title: 라벨링
+          body: BBox · Polygon 어노테이션과 COCO 연계 인터페이스를 두어 학습 파이프라인에 붙였습니다.
+      outcomes: 클라우드 전환으로 운영 편의 증가, 업로드/다운로드 응답 35% 개선.
+
+    - id: smartfactory
+      title: 스마트공장 이상탐지
+      period: 2023.09 — 2024.05
+      subtitle: 중기부 / 경기TP / 신우산업
+      label: Time Series · MQ
+      body: RabbitMQ → WebSocket 센싱 파이프라인. 통계 조회 120ms → 38ms, 피크 전력 제어 효과.
+      summary: 설비 센싱 데이터를 실시간으로 모으고, 이상탐지와 원격 제어, 일일 리포트까지 한 공장 운영 화면에 올려야 했습니다.
+      tech:
+        - FastAPI
+        - RabbitMQ
+        - Redis
+        - MariaDB
+        - WebSocket
+        - Docker
+        - Jenkins
+        - Transformer
+      solutions:
+        - title: 센싱 폭주
+          body: RabbitMQ와 WebSocket을 나눠, 수집·추론·화면 전송이 서로를 막지 않게 했습니다.
+        - title: 조회 지연
+          body: 복잡한 통계 쿼리를 구조화하고 Redis 캐시를 두어 평균 응답을 120ms에서 38ms로 내렸습니다.
+        - title: 현장 리포트
+          body: 설비 모니터링 리포트 자동 작성 요구를 정의하고 배치 통계로 구현했습니다.
+      outcomes: 피크 전력 제어로 하루 최대 약 1,929만 원 절감 효과, 물성 배합·품질 관리 제공.
+
+    - id: pms
+      title: PMS · NPU Denoise
+      period: 2023.06 — 2023.12
+      subtitle: NIPA AI 바우처 · 4by4
+      label: GPU/NPU Serving
+      body: Furiosa NPU + Docker 모델 서빙, FFmpeg 인코딩. GPU/NPU 이원 추론 환경을 제품으로 납품.
+      summary: 화질 개선 Denoise 모델을 GPU와 Furiosa NPU 양쪽에 올리고, 웹에서 영상 업로드·인코딩·배포가 되게 만든 솔루션이었습니다.
+      tech:
+        - FastAPI
+        - PyTorch
+        - FuriosaSDK
+        - FFmpeg
+        - Kafka
+        - Docker
+        - Spring Boot
+      solutions:
+        - title: 연구 코드를 제품으로
+          body: 노트북에 있던 추론 코드를 FastAPI · Docker 컨테이너로 패키징해 등록/배포 API에 붙였습니다.
+        - title: 웹 인코딩
+          body: FFmpeg로 옵션별 인코딩을 제공해 화질과 용량을 현장에서 고르게 했습니다.
+        - title: NPU 운용
+          body: NVIDIA GPU와 Furiosa Warboy를 같이 모니터링하는 서빙 환경을 만들었습니다.
+      outcomes: AI 반도체 분과 바우처 과제 완료, F사 납품.
+
+side_project:
+  heading: 실무 밖에서 기획부터 배포까지
+  id: saegim
+  kicker: Personal · Mobile
+  title: 새김
+  subtitle: AI 기반 성경 구절 타이핑 모바일 앱
+  summary: 읽는 경험을 타이핑 루틴으로 바꿨습니다. 사용자가 남긴 속도와 패턴을 바탕으로 다음 구절을 고르는 추천 에이전트를 붙이고, 화면 흐름은 직접 설계했습니다.
+  highlights:
+    - title: 풀스택
+      body: React 클라이언트와 FastAPI 서버를 직접 설계·구현했습니다.
+    - title: 추천 에이전트
+      body: 사용자 맞춤형 AI 추천을 서비스 흐름에 연동했습니다.
+    - title: UI/UX
+      body: 기획 공백 없이 화면 설계를 주도해 타이핑 경험의 밀도를 맞췄습니다.
+  tech:
+    - React
+    - FastAPI
+    - AI Agent
+    - UI/UX
+  diagram_title: 새김 — 서비스 구조
+  diagram_caption: React 앱, FastAPI, 추천 에이전트 연동을 보여주는 구조도입니다.
+
+experience:
+  heading: 최근 경력, 시스템이 커진 구간
+  recent:
+    - title: 아이엔소프트 · AX본부 AI시스템팀
+      period: 2026.02 — 현재 · 프로
+      body: AWS ECS · Lambda · S3 · Step Functions · SageMaker 아키텍처와 LangGraph 기반 동적 Agent, LangFuse · Grafana · Prometheus 관측 스택을 설계합니다. 글로벌 자동차 부품사 MLOps와 사내 iSODA cowork이 이 구간의 본류입니다.
+    - title: BSG 파트너스 · 클라우드본부 BD팀
+      period: 2025.07 — 2025.09 · 과장 (계약직)
+      body: CloudFormation · CodePipeline 기반 CI/CD, Bedrock Agent, RAG 모듈화를 맡았습니다. SmartCLM을 AWS Marketplace SaaS로 올리고 L사 CLM 고도화 PoC를 끝냈습니다.
+    - title: 에이아이네이션 · 기업부설연구소
+      period: 2023.01 — 2025.05 · 팀장 → 선임연구원
+      body: 온프레미스 3-tier와 AWS 전환, Gitlab · Jenkins · Harbor CI/CD, PyTorch 모델 패키징까지 한 팀의 백엔드·인프라를 이끌었습니다. 딥레이크, X-ray Detection, 스마트공장, NPU 화질개선이 이 기간의 산출물입니다.
+  earlier:
+    title: 2022년 이전 경력
+    summary: 거민시스템 · 미라클솔루션 · 데이터/기획 프로젝트
+    items:
+      - title: 거민시스템 · 과장
+        period: 2020.09 — 2022.12
+        body: 정부과제 기획·PM, NLP/시계열/영상 모델, 데이터 파이프라인. 지하공동구 표준관리시스템, 디지털트윈 실증, 지역경제 빅데이터 플랫폼.
+      - title: 미라클솔루션 · 대리
+        period: 2020.02 — 2020.08
+        body: 네트워크 시계열 분석, 단국대 교육지식플랫폼 연계 모듈, TTA 인증 지원.
+      - title: 프리랜서
+        period: 2019.10 — 2020.01
+        body: NLP · 시계열 · 고객 분석, API 기반 데이터 수집.
+
+stack:
+  heading: 프로덕션에서 반복한 도구
+  items:
+    - title: Backend
+      body: FastAPI, Flask, SQLAlchemy, Redis, PostgreSQL, Kafka, WebSocket, Celery
+    - title: AI / Data
+      body: PyTorch, LangGraph, LangChain, Bedrock, YOLO, Transformer, SageMaker, vLLM
+    - title: Infra
+      body: AWS ECS/Lambda/S3, Terraform, CloudFormation, Docker, Kubernetes, Grafana
+
+talks:
+  heading: 강의와 발표로 남긴 설명
+  intro: 아키텍처를 코드로만 두지 않고, 현장과 교실에서 같은 언어로 풀어 본 기록입니다.
+  items:
+    - period: 2025
+      place: AWS 센터필드
+      title: AWS AI Industry Week Demo Showcase
+      body: 비에스지파트너스 SmartCLM 서비스를 시연하고, RAG·Agent 구조를 참관객에게 설명했습니다.
+      image: assets/presentation/AWS_센터필드.png
+    - period: 2023
+      place: 한국공학대학교 탄소중립혁신센터
+      title: 스마트에너지플랫폼 MC기술세미나
+      body: 제조 현장 AI 특강. 센싱 데이터와 이상탐지를 스마트공장 맥락에서 풀었습니다.
+      image: assets/presentation/한국공학대학교.png
+    - period: 2023
+      place: 고려대 안암캠퍼스
+      title: 심리학 기반 AI 이해와 활용 특강
+      body: AI 빅데이터 분석 프로세스를 비전공 청중 기준으로 재구성해 강의했습니다.
+
+contact:
+  heading: 시스템 이야기를 이어가겠습니다
+  body: AI Tech Lead · MLOps 아키텍트 포지션의 문제 정의, 제약, 기대하는 운영 수준을 듣고 싶습니다.
+
+footer:
+  credits: 경영학 전공 · ADsP · Coursera MLOps.
