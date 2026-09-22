@@ -62,10 +62,16 @@
       `${id}_architecture`,
       `${id}_annotation`,
       `${id}_tech`,
+      `${id}_skills`,
+      `${id}_screen`,
+      `${id}_aws`,
       "main",
       "architecture",
       "annotation",
       "tech",
+      "skills",
+      "screen",
+      "aws",
     ];
     const files = extras.filter(Boolean);
     stems.forEach((stem) => {
@@ -94,7 +100,7 @@
       const img = document.createElement("img");
       img.src = src;
       img.alt = title;
-      img.className = "h-full min-h-[240px] w-full rounded-xl object-cover";
+      img.className = "h-full w-full rounded-xl object-contain bg-white";
       slot.classList.add("p-0");
       slot.append(img);
       return;
@@ -181,14 +187,35 @@
       solutionRoot.append(row);
     });
 
-    const src = await findDiagram(project.id, project.diagram);
-    fillSlot(node.querySelector("[data-arch-trigger]"), {
-      src,
-      title: project.diagram_title || `${project.title} 아키텍처`,
-      caption: project.diagram_caption || `assets/projects/${project.id}/architecture.png 에 이미지를 넣으면 표시됩니다.`,
+    const extras = [project.diagram, ...(project.images || [])].filter(Boolean);
+    const gallery = await findGallery(project.id, extras);
+
+    const slot = node.querySelector("[data-arch-trigger]");
+    const column = node.querySelector("[data-arch-col]");
+    const title = project.diagram_title || `${project.title} 아키텍처`;
+    const caption = project.diagram_caption || "";
+    fillSlot(slot, {
+      src: gallery[0] || "",
+      title,
+      caption,
       emptyLabel: "다이어그램 플레이스홀더",
-      emptyHint: `assets/projects/${project.id}/architecture.png 만 넣으면 됩니다.`,
+      emptyHint: `assets/projects/${project.id}/ 에 이미지를 넣거나 diagram 경로를 지정하세요.`,
     });
+
+    if (gallery.length > 1 && column) {
+      gallery.slice(1).forEach((src, index) => {
+        const extra = slot.cloneNode(false);
+        extra.className = "arch-slot h-[240px] w-full rounded-xl p-0 text-left";
+        fillSlot(extra, {
+          src,
+          title: `${project.title} · 자료 ${index + 2}`,
+          caption,
+          emptyLabel: "",
+          emptyHint: "",
+        });
+        column.append(extra);
+      });
+    }
     return node;
   };
 
@@ -253,14 +280,41 @@
       techRoot.append(badge);
     });
 
-    const src = await findDiagram(side.id, side.diagram);
-    fillSlot(document.getElementById("side-diagram"), {
-      src,
-      title: side.diagram_title || side.title,
-      caption: side.diagram_caption || `assets/projects/${side.id}/architecture.png 에 이미지를 넣으면 표시됩니다.`,
+    const extras = [side.diagram, ...(side.images || [])].filter(Boolean);
+    const found = await Promise.all(extras.map(probeImage));
+    const gallery = [...new Set(found.filter(Boolean))];
+    if (!gallery.length) {
+      const fallback = await findDiagram(side.id, side.diagram);
+      if (fallback) gallery.push(fallback);
+    }
+
+    const slot = document.getElementById("side-diagram");
+    const column = document.getElementById("side-arch-col");
+    const title = side.diagram_title || side.title;
+    const caption = side.diagram_caption || "";
+    fillSlot(slot, {
+      src: gallery[0] || "",
+      title,
+      caption,
       emptyLabel: "화면 · 아키텍처 플레이스홀더",
-      emptyHint: `assets/projects/${side.id}/architecture.png 만 넣으면 됩니다.`,
+      emptyHint: `assets/projects/${side.id}/ 에 이미지를 넣거나 diagram 경로를 지정하세요.`,
     });
+
+    if (gallery.length > 1 && column && slot) {
+      gallery.slice(1).forEach((src, index) => {
+        const extra = slot.cloneNode(false);
+        extra.removeAttribute("id");
+        extra.className = "arch-slot h-[240px] w-full rounded-xl p-0 text-left";
+        fillSlot(extra, {
+          src,
+          title: `${side.title} · 자료 ${index + 2}`,
+          caption,
+          emptyLabel: "",
+          emptyHint: "",
+        });
+        column.append(extra);
+      });
+    }
   };
 
   const renderTalks = async (data) => {

@@ -112,7 +112,7 @@
         <section id="side-project" class="relative mx-auto max-w-6xl px-5 pb-24 md:px-8">
           <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">03 — Side Project</p>
           <h2 id="side-heading" class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl"></h2>
-          <article class="case-card mt-8 rounded-2xl p-6 md:grid md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:p-8">
+          <article class="case-card mt-8 rounded-2xl p-6 md:grid md:grid-cols-[1.15fr_0.85fr] md:items-start md:gap-8 md:p-8">
             <div>
               <p id="side-kicker" class="font-mono text-xs text-signal"></p>
               <h3 id="side-title" class="mt-2 text-xl font-semibold md:text-2xl"></h3>
@@ -121,7 +121,9 @@
               <ul id="side-highlights" class="mt-5 space-y-3 text-sm leading-6 text-mist"></ul>
               <div id="side-tech" class="mt-5 flex flex-wrap gap-2"></div>
             </div>
-            <button id="side-diagram" type="button" class="arch-slot mt-8 min-h-[220px] rounded-xl p-5 text-left md:mt-0" data-arch-trigger></button>
+            <div id="side-arch-col" class="mt-8 grid gap-3 md:mt-0" data-arch-col>
+              <button id="side-diagram" type="button" class="arch-slot h-[240px] w-full rounded-xl p-4 text-left" data-arch-trigger></button>
+            </div>
           </article>
         </section>
 
@@ -256,12 +258,14 @@
         </div>
         <p class="mt-6 max-w-3xl text-[15px] leading-7 text-snow/90" data-summary></p>
         <div class="mt-5 flex flex-wrap gap-2" data-tech></div>
-        <div class="mt-8 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <div class="mt-8 grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <h4 class="text-sm font-semibold text-signal">주요 해결</h4>
             <ul class="mt-4 space-y-4 text-sm leading-6 text-mist" data-solutions></ul>
           </div>
-          <button type="button" class="arch-slot min-h-[240px] rounded-xl p-4 text-left" data-arch-trigger></button>
+          <div class="grid gap-3" data-arch-col>
+            <button type="button" class="arch-slot h-[240px] w-full rounded-xl p-4 text-left" data-arch-trigger></button>
+          </div>
         </div>
       </article>
     </template>
@@ -316,7 +320,7 @@
       </div>
     </template>
 
-    <div class="hidden h-20 h-24 h-36 h-full min-h-[160px] min-h-[200px] min-h-[240px] w-28 w-36 w-full shrink-0 rounded-xl object-cover p-0"></div>
+    <div class="hidden h-20 h-24 h-36 h-[240px] h-full min-h-[160px] min-h-[200px] min-h-[240px] w-28 w-36 w-full shrink-0 rounded-xl object-contain object-cover bg-white p-0 items-start"></div>
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
